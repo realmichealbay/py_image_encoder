@@ -34,8 +34,6 @@ elif textI.strip().lower() == "decode":
     
     index = encoded_image.find("MESSAGESTART") + 12
     print(encoded_image[index:-1])
-
-    
 else:
     raise ValueError("Has to be encode or decode (this is technically not an error dont say there was an error i could of just used a print statement)")
     
