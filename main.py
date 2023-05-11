@@ -1,6 +1,13 @@
 import os 
+import prompt_toolkit
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
+from prompt_toolkit.shortcuts import CompleteStyle
 
-textI = input("Select Encode or Decode: ")
+
+complete_1 = WordCompleter(["Encode","Decode"], ignore_case=True)
+
+textI = prompt("Encode or Decode ", completer=complete_1,complete_style=CompleteStyle.MULTI_COLUMN)
 
 if textI.strip().lower() == "encode":
     # encode
@@ -9,6 +16,7 @@ if textI.strip().lower() == "encode":
         file.write(f"MESSAGESTART{message}")
         file.close()
     os.system("copy /b shoebill.png + msg.txt shoebill_encoded.png")
+    os.system("cls")
     
     try:
         os.remove("msg.txt")
